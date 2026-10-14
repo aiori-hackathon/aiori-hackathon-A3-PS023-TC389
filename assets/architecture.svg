@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="570" viewBox="0 0 960 570" role="img" aria-label="System architecture: user talks to the control plane on Host A (API service, etcd, scheduler, controller), which drives node agents on Host A and Host B over mutual TLS; each agent runs one Cloud Hypervisor VMM per VM.">
+  <style>
+    .bg{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+    .t{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;fill:#1f2328}
+    .m{fill:#59636e}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .box{fill:#f6f8fa;stroke:#d0d7de;stroke-width:1.2}
+    .kvm{fill:#eaeef2;stroke:#d0d7de;stroke-width:1.2}
+    .vmm{fill:#ddf4ff;stroke:#54aeff;stroke-width:1.2}
+    .slot{fill:none;stroke:#8c959f;stroke-width:1.2;stroke-dasharray:4 4}
+    .grp{fill:none;stroke:#afb8c1;stroke-width:1.2;stroke-dasharray:6 4}
+    .ln{stroke:#59636e;stroke-width:1.4;fill:none}
+    .dash{stroke-dasharray:5 4}
+    .acc{stroke:#e8590c;stroke-width:2.4;fill:none}
+    .accf{fill:#e8590c}
+    .mk{fill:#59636e}
+    .halo{paint-order:stroke;stroke:#ffffff;stroke-width:5px;stroke-linejoin:round}
+    @media (prefers-color-scheme: dark){
+      .bg{fill:#0d1117;stroke:#3d444d}
+      .t{fill:#e6edf3} .m{fill:#9198a1}
+      .box{fill:#161b22;stroke:#3d444d} .kvm{fill:#212830;stroke:#3d444d}
+      .vmm{fill:#0c2d6b;stroke:#1f6feb} .slot{stroke:#656c76} .grp{stroke:#3d444d}
+      .ln{stroke:#9198a1} .mk{fill:#9198a1}
+      .acc{stroke:#ff8a4c} .accf{fill:#ff8a4c} .halo{stroke:#0d1117}
+    }
+  </style>
+  <rect class="bg" x="0.5" y="0.5" width="959" height="569" rx="12"/>
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="mk" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path class="accf" d="M0,0 L10,5 L0,10 z"/>
+    </marker>
+  </defs>
+
+  <!-- User -->
+  <rect class="box" x="20" y="166" width="100" height="46" rx="8"/>
+  <text x="70" y="194" class="t" font-size="13.5" font-weight="600" text-anchor="middle">User / CLI</text>
+  <path class="ln" d="M120,189 H193" marker-end="url(#ah)"/>
+  <text x="158" y="181" class="t m" font-size="11" text-anchor="middle">HTTPS</text>
+  <text x="158" y="206" class="t m" font-size="11" text-anchor="middle">+ JWT</text>
+
+  <!-- Control plane -->
+  <rect class="grp" x="172" y="120" width="340" height="290" rx="12"/>
+  <text x="190" y="146" class="t m" font-size="12.5" font-weight="600">Control plane · Host A</text>
+
+  <rect class="box" x="195" y="165" width="135" height="48" rx="8"/>
+  <text x="262.5" y="194" class="t" font-size="13.5" font-weight="600" text-anchor="middle">API service</text>
+  <rect class="box" x="355" y="165" width="135" height="48" rx="8"/>
+  <text x="422.5" y="194" class="t" font-size="13.5" font-weight="600" text-anchor="middle">etcd</text>
+  <rect class="box" x="195" y="320" width="135" height="48" rx="8"/>
+  <text x="262.5" y="349" class="t" font-size="13.5" font-weight="600" text-anchor="middle">Scheduler</text>
+  <rect class="box" x="355" y="320" width="135" height="48" rx="8"/>
+  <text x="422.5" y="349" class="t" font-size="13.5" font-weight="600" text-anchor="middle">Controller</text>
+
+  <path class="ln" d="M330,189 H353" marker-end="url(#ah)"/>
+  <path class="ln dash" d="M380,213 L300,318" marker-start="url(#ah)" marker-end="url(#ah)"/>
+  <text x="340" y="270" class="t m halo" font-size="11" text-anchor="middle">watch · txn</text>
+  <path class="ln dash" d="M450,213 V318" marker-end="url(#ah)"/>
+  <text x="458" y="270" class="t m" font-size="11">watch</text>
+  <text x="342" y="396" class="t m" font-size="11" text-anchor="middle">etcd: VM specs · heartbeats · reservations</text>
+
+  <!-- mTLS channel -->
+  <path class="acc" d="M490,344 H614" marker-end="url(#aha)"/>
+  <path class="acc" d="M555,344 V80 H614" marker-end="url(#aha)"/>
+  <circle class="accf" cx="555" cy="344" r="3.5"/>
+  <text transform="translate(546,212) rotate(-90)" class="t" font-size="11.5" font-weight="600" text-anchor="middle">mTLS + signed requests</text>
+
+  <!-- Worker Host A -->
+  <rect class="grp" x="595" y="20" width="345" height="230" rx="12"/>
+  <text x="615" y="44" class="t m" font-size="12.5" font-weight="600">Worker · Host A</text>
+  <rect class="box" x="620" y="60" width="130" height="40" rx="8"/>
+  <text x="685" y="85" class="t" font-size="13" font-weight="600" text-anchor="middle">Node agent</text>
+  <rect class="box" x="620" y="115" width="130" height="40" rx="8"/>
+  <text x="685" y="140" class="t" font-size="13" text-anchor="middle">Monitor</text>
+  <rect class="box" x="620" y="170" width="130" height="40" rx="8"/>
+  <text x="685" y="195" class="t" font-size="13" text-anchor="middle">Garbage collector</text>
+  <rect class="vmm" x="790" y="60" width="130" height="40" rx="8"/>
+  <text x="855" y="85" class="t mono" font-size="12.5" text-anchor="middle">VMM · vm-1</text>
+  <rect class="vmm" x="790" y="115" width="130" height="40" rx="8"/>
+  <text x="855" y="140" class="t mono" font-size="12.5" text-anchor="middle">VMM · vm-2</text>
+  <rect class="kvm" x="790" y="170" width="130" height="40" rx="8"/>
+  <text x="855" y="195" class="t mono" font-size="12.5" text-anchor="middle">/dev/kvm</text>
+  <path class="ln" d="M750,80 H788" marker-end="url(#ah)"/>
+  <path class="ln" d="M768,80 V135 H788" marker-end="url(#ah)"/>
+  <text x="767" y="236" class="t m mono" font-size="11" text-anchor="middle">unix sockets in /run/vmctl (0700)</text>
+
+  <!-- Worker Host B -->
+  <rect class="grp" x="595" y="280" width="345" height="230" rx="12"/>
+  <text x="615" y="304" class="t m" font-size="12.5" font-weight="600">Worker · Host B</text>
+  <rect class="box" x="620" y="324" width="130" height="40" rx="8"/>
+  <text x="685" y="349" class="t" font-size="13" font-weight="600" text-anchor="middle">Node agent</text>
+  <rect class="box" x="620" y="379" width="130" height="40" rx="8"/>
+  <text x="685" y="404" class="t" font-size="13" text-anchor="middle">Monitor</text>
+  <rect class="box" x="620" y="434" width="130" height="40" rx="8"/>
+  <text x="685" y="459" class="t" font-size="13" text-anchor="middle">Garbage collector</text>
+  <rect class="vmm" x="790" y="324" width="130" height="40" rx="8"/>
+  <text x="855" y="349" class="t mono" font-size="12.5" text-anchor="middle">VMM · vm-3</text>
+  <rect class="slot" x="790" y="379" width="130" height="40" rx="8"/>
+  <text x="855" y="404" class="t m" font-size="12" text-anchor="middle">free capacity</text>
+  <rect class="kvm" x="790" y="434" width="130" height="40" rx="8"/>
+  <text x="855" y="459" class="t mono" font-size="12.5" text-anchor="middle">/dev/kvm</text>
+  <path class="ln" d="M750,344 H788" marker-end="url(#ah)"/>
+  <text x="767" y="496" class="t m mono" font-size="11" text-anchor="middle">unix sockets in /run/vmctl (0700)</text>
+
+  <!-- Legend -->
+  <path class="acc" d="M20,546 H52"/>
+  <text x="60" y="550" class="t m" font-size="12">controller ↔ agent (mTLS + HMAC)</text>
+  <path class="ln dash" d="M290,546 H322"/>
+  <text x="330" y="550" class="t m" font-size="12">etcd watch / transaction</text>
+  <path class="ln" d="M500,546 H532"/>
+  <text x="540" y="550" class="t m" font-size="12">request / unix socket</text>
+  <rect class="vmm" x="700" y="538" width="22" height="16" rx="3"/>
+  <text x="730" y="550" class="t m" font-size="12">one cloud-hypervisor process per VM</text>
+</svg>

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="984" height="168" viewBox="-12 -4 984 168" role="img" aria-label="Deployment timeline: M1 Setup, M2 Worker agent, M3 Control plane, M4 Reliability, M5 Validate.">
+  <style>
+    .bg{fill:#ffffff;stroke:#d0d7de;stroke-width:1}
+    .t{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;fill:#1f2328}
+    .m{fill:#59636e}
+    .chev{fill:#d9480f}
+    .on{fill:#ffffff}
+    @media (prefers-color-scheme: dark){
+      .bg{fill:#0d1117;stroke:#3d444d}
+      .t{fill:#e6edf3} .m{fill:#9198a1}
+      .chev{fill:#e8590c}
+    }
+  </style>
+  <rect class="bg" x="-11.5" y="-3.5" width="983" height="167" rx="12"/>
+
+  <polygon class="chev" points="4,16 174,16 192,44 174,72 4,72" opacity=".72"/>
+  <polygon class="chev" points="194,16 364,16 382,44 364,72 194,72 212,44" opacity=".79"/>
+  <polygon class="chev" points="384,16 554,16 572,44 554,72 384,72 402,44" opacity=".86"/>
+  <polygon class="chev" points="574,16 744,16 762,44 744,72 574,72 592,44" opacity=".93"/>
+  <polygon class="chev" points="764,16 934,16 952,44 934,72 764,72 782,44"/>
+
+  <g font-size="14" font-weight="700" text-anchor="middle" class="on" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+    <text class="on" x="92"  y="49">M1 · Setup</text>
+    <text class="on" x="290" y="49">M2 · Worker agent</text>
+    <text class="on" x="480" y="49">M3 · Control plane</text>
+    <text class="on" x="670" y="49">M4 · Reliability</text>
+    <text class="on" x="860" y="49">M5 · Validate</text>
+  </g>
+
+  <g font-size="12.5" text-anchor="middle">
+    <text class="t m" x="92"  y="100">2 KVM hosts, bridge net,</text>
+    <text class="t m" x="92"  y="118">prepared image,</text>
+    <text class="t m" x="92"  y="136">CH binary, etcd</text>
+
+    <text class="t m" x="290" y="100">CH API client,</text>
+    <text class="t m" x="290" y="118">lifecycle calls,</text>
+    <text class="t m" x="290" y="136">cgroups + TAP</text>
+
+    <text class="t m" x="480" y="100">API service + auth,</text>
+    <text class="t m" x="480" y="118">etcd model, scheduler,</text>
+    <text class="t m" x="480" y="136">controller loop</text>
+
+    <text class="t m" x="670" y="100">rollback journal, GC,</text>
+    <text class="t m" x="670" y="118">monitor, auto-heal</text>
+
+    <text class="t m" x="860" y="100">lifecycle, placement</text>
+    <text class="t m" x="860" y="118">and failure tests;</text>
+    <text class="t m" x="860" y="136">report + demo</text>
+  </g>
+</svg>

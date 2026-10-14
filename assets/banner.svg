@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="240" viewBox="0 0 960 240" role="img" aria-label="Minimal Two-Node Cloud Hypervisor VM Controller — AIORI Hackathon 3, A3-PS023-TC389">
+  <style>
+    .t{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;fill:#1f2328}
+    .m{fill:#59636e}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+    .card{fill:#f6f8fa;stroke:#d0d7de;stroke-width:1.2}
+    .box{fill:#ffffff;stroke:#d0d7de;stroke-width:1.2}
+    .vm{fill:#0969da}
+    .slot{fill:none;stroke:#8c959f;stroke-width:1.2;stroke-dasharray:3 3}
+    .acc{stroke:#e8590c;stroke-width:2.4;fill:none}
+    .accf{fill:#e8590c}
+    .onacc{fill:#ffffff}
+    @media (prefers-color-scheme: dark){
+      .t{fill:#e6edf3} .m{fill:#9198a1}
+      .card{fill:#161b22;stroke:#3d444d} .box{fill:#0d1117;stroke:#3d444d}
+      .vm{fill:#4493f8} .slot{stroke:#656c76}
+      .acc{stroke:#ff8a4c} .accf{fill:#ff8a4c} .onacc{fill:#0d1117}
+    }
+  </style>
+
+  <rect class="card" x="1" y="1" width="958" height="238" rx="14"/>
+
+  <text x="40" y="56" class="t m" font-size="12.5" font-weight="600" letter-spacing="1.5">AIORI HACKATHON 3 · CLOUD COMPUTING · A3-PS023-TC389</text>
+  <text x="40" y="104" class="t" font-size="32" font-weight="700">Minimal Two-Node</text>
+  <text x="40" y="144" class="t" font-size="32" font-weight="700">Cloud Hypervisor VM Controller</text>
+  <text x="40" y="182" class="t m" font-size="15">Create · start · stop · list VMs on two <tspan class="mono">/dev/kvm</tspan> hosts</text>
+  <text x="40" y="210" class="t m" font-size="13">Team Cod-i</text>
+
+  <!-- control plane -->
+  <rect class="accf" x="730" y="26" width="140" height="40" rx="8"/>
+  <text x="800" y="51" class="t onacc" font-size="13.5" font-weight="700" text-anchor="middle">control plane</text>
+
+  <!-- mTLS links -->
+  <path class="acc" d="M800,66 V98 M730,98 H870 M730,98 V130 M870,98 V130"/>
+
+  <!-- Host A -->
+  <rect class="box" x="670" y="130" width="120" height="84" rx="8"/>
+  <text x="730" y="152" class="t mono" font-size="12" font-weight="600" text-anchor="middle">Host A</text>
+  <rect class="vm" x="682" y="162" width="28" height="22" rx="4"/>
+  <rect class="vm" x="716" y="162" width="28" height="22" rx="4"/>
+  <rect class="slot" x="750" y="162" width="28" height="22" rx="4"/>
+  <text x="730" y="204" class="t m mono" font-size="11" text-anchor="middle">/dev/kvm</text>
+
+  <!-- Host B -->
+  <rect class="box" x="810" y="130" width="120" height="84" rx="8"/>
+  <text x="870" y="152" class="t mono" font-size="12" font-weight="600" text-anchor="middle">Host B</text>
+  <rect class="vm" x="822" y="162" width="28" height="22" rx="4"/>
+  <rect class="slot" x="856" y="162" width="28" height="22" rx="4"/>
+  <rect class="slot" x="890" y="162" width="28" height="22" rx="4"/>
+  <text x="870" y="204" class="t m mono" font-size="11" text-anchor="middle">/dev/kvm</text>
+</svg>
